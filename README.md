@@ -1,2 +1,2 @@
 # Git
-syteme de gestion versionning avec l'API V3 Github
+sytème de gestion de versionning utilisant l'API V3 Github
