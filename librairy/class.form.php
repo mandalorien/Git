@@ -38,7 +38,7 @@ class Form
 
 	// ----------------------------------------------------------------------------------------------------------------
 	//
-	// Entete de page
+	// Entête de page
 	//
 	private function StdUserHeader($title = NAME_SITE) 
 	{
@@ -85,7 +85,7 @@ class Form
 
 	// ----------------------------------------------------------------------------------------------------------------
 	//
-	// Corp de page
+	// Corps de page
 
 	private function ShowCorp($page,$name)
 	{	

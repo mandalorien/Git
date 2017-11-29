@@ -2,11 +2,11 @@
 header('Content-Type: application/json');
 require_once(dirname(dirname(__FILE__)) . DIRECTORY_SEPARATOR . 'constant.php');
 
-require_once(ROOT_PATH .'librairy/class.tools.php');# outils diverse
-require_once(ROOT_PATH .'librairy/class.template.php');# Base de donnee
-require_once(ROOT_PATH .'librairy/class.form.php');# Base de donnee
-require_once(ROOT_PATH .'librairy/class.pdo_connect.php');# Base de donnee
-require_once(ROOT_PATH .'librairy/class.model_class.php');# Gestion de création des classes ou de la BDD si les classes existe !
+require_once(ROOT_PATH .'librairy/class.tools.php');# outils divers
+require_once(ROOT_PATH .'librairy/class.template.php');# Base de donnees
+require_once(ROOT_PATH .'librairy/class.form.php');# Base de donnees
+require_once(ROOT_PATH .'librairy/class.pdo_connect.php');# Base de donnees
+require_once(ROOT_PATH .'librairy/class.model_class.php');# Gestion de création des classes ou de la BDD si les classes existent !
 
 $template = new Template();
 $form = new Form($template);
