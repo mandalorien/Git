@@ -33,7 +33,6 @@ $(document).ready(function()
 		cl.show();
 		
 	$("#searchRepository").keyup(function() {
-		console.log($( "#searchRepository" ).val());
 		gitconfig.Repository = $("#searchRepository").val();
 		
 		if($("#searchRepository").val().isAlphaNumeric()){
@@ -88,7 +87,6 @@ function Search(){
 	})
 	.done(function(data) {
 		gitconfig.Repository = data.items[0].name;
-		console.log(gitconfig.Repository);
 		$("#message").hide();
 	})
 	.fail(function(data) {
@@ -97,8 +95,6 @@ function Search(){
 }
 
 function Message(msg,error){
-	console.log(msg);
-	console.log(error);
 	$.post(getBaseURL()+"/ajax/index.php", {message:msg,error:error}, function(data) {
 			$('#canvasloader-container').show();
 	})
