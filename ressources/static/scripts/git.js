@@ -13,28 +13,31 @@ var gitconfig = {
 	listBranchFocus:[
 		"master",
 		"dev"
-	]
+	],
+	limit:0,
+	remaining:0
 };
 
 $(document).ready(function()
 {
+	$("#searchRepository").hide(); 
 	$('#canvasloader-container').hide();
 	var cl = new CanvasLoader('canvasloader-container');
-		cl.setColor('#2970db'); /* default is '#000000' */
-		cl.setShape('sqare'); /* default is 'oval' */
-		cl.setDiameter(67); /* default is 40 */
-		cl.setDensity(20); /* default is 40 */
-		cl.setRange(1); /* default is 1.3 */
-		cl.setSpeed(1); /* default is 2 */
-		cl.setFPS(25); /* default is 24 */
-		cl.show(); /* Hidden by default */
+		cl.setColor('#2970db');
+		cl.setShape('sqare');
+		cl.setDiameter(67);
+		cl.setDensity(20);
+		cl.setRange(1);
+		cl.setSpeed(1);
+		cl.setFPS(25);
+		cl.show();
 		
 	$("#searchRepository").keyup(function() {
 		console.log($( "#searchRepository" ).val());
 		gitconfig.Repository = $("#searchRepository").val();
 		
 		if($("#searchRepository").val().isAlphaNumeric()){
-			Search();
+			// Search();
 		}
 	});
 	
@@ -42,43 +45,55 @@ $(document).ready(function()
 });
 
 function RepositoryFocus(){
-	var listBranches = $.get("https://api.github.com/repos/"+ gitconfig.Author +"/"+ gitconfig.Repository +"/branches", function(data) {
+	$.get("https://api.github.com/rate_limit", function(rates) {
 	})
-	  .done(function(data) {
-		$("#message").hide();
-		$(data).each(function() {
-			for(var i = 0;i <= gitconfig.listBranchFocus.length - 1;i++){
-				if(gitconfig.listBranchFocus[i] == this.name)
-				{
-					var branch = this.name;
-					var SBranch = $.get("https://api.github.com/repos/"+ gitconfig.Author +"/"+ gitconfig.Repository +"/branches/"+ branch, function(infos) {
-					})
-					  .done(function(infos) {
-						console.log(infos.commit.commit.committer);
-					  })
-					  .fail(function() {
-						Message(data.responseJSON.message,true);
-					  });
+	.done(function(rates) {
+		
+		gitconfig.limit = rates.rate.limit;
+		gitconfig.remaining = rates.rate.remaining;
+		
+		Message("Vous avez utilisé "+ (gitconfig.limit - gitconfig.remaining) +" fois l'API V3 Github , vous pouvez encore l'utiliser " + gitconfig.remaining + ".");
+		
+		var listBranches = $.get("https://api.github.com/repos/"+ gitconfig.Author +"/"+ gitconfig.Repository +"/branches", function(data) {
+		})
+		.done(function(data) {
+			$(data).each(function() {
+				for(var i = 0;i <= gitconfig.listBranchFocus.length - 1;i++){
+					if(gitconfig.listBranchFocus[i] == this.name){
+						var branch = this.name;
+						var SBranch = $.get("https://api.github.com/repos/"+ gitconfig.Author +"/"+ gitconfig.Repository +"/branches/"+ branch, function(infos) {
+						})
+						.done(function(infos) {
+							console.log(infos.commit.commit.committer);
+						})
+						.fail(function() {
+							Message(data.responseJSON.message,true);
+						});
+					}
 				}
-			}
+			});
+		})
+		.fail(function(data) {
+			Message(data.responseJSON.message,true);
 		});
-	  })
-	  .fail(function(data) {
-		Message(data.responseJSON.message,true);
-	  });
+	});
 }
 
 function Search(){
+	
+	// rate is limit of use API V3 github , you have to be connected
+	// https://api.github.com/rate_limit
+	
 	var listBranches = $.get("https://api.github.com/search/repositories?q="+ gitconfig.Repository, function(data) {
 	})
-	  .done(function(data) {
+	.done(function(data) {
 		gitconfig.Repository = data.items[0].name;
 		console.log(gitconfig.Repository);
 		$("#message").hide();
-	  })
-	  .fail(function(data) {
+	})
+	.fail(function(data) {
 		Message(data.responseJSON.message);
-	  });
+	});
 }
 
 function Message(msg,error){
