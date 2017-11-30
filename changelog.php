@@ -27,13 +27,13 @@ $CHANGELOG['0.0.8'] = '<span class="label label-warning">New</span> <strong>upda
 	// $list .= $form->display($template->displaytemplate('changelog_table', $parse));
 // }
 
-// foreach($CHANGELOG as $VERSION=>$DESCRIPTION){
+foreach($CHANGELOG as $VERSION=>$DESCRIPTION){
 	
-	// $parse['version_number'] = $VERSION;
-	// $parse['description'] = $DESCRIPTION;
+	$parse['version_number'] = $VERSION;
+	$parse['description'] = $DESCRIPTION;
 
-	// $list .= $form->display($template->displaytemplate('changelog_table', $parse));
-// }
+	$list .= $template->displaytemplate('changelog_table', $parse);
+}
 
 $parse['SCRIPT'] = SCRIPT;
 $parse['extension'] = SCRIPT;
