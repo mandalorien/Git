@@ -31,17 +31,17 @@ class DatabaseConnection
 		return $this->_database;
 	}
 	
-	// nombre de requete executer
+	// nombre de requetes executées
 	public function Update_Countquery(){
 		$this->_countquery = $this->_countquery + 1;
 	}
 	
-	// visualisation des requetes executer
+	// visualisation des requetes executées
 	public function Update_Vuequery($sql){
 		array_push($this->_vuequery,$sql);
 	}
 	
-	// temps d'execution des requetes executer
+	// temps d'execution des requetes executées
 	public function Update_Timexecutequery($time_start){
 		$time_end = microtime(true);
 		$microtime = $time_end - $time_start;

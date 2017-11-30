@@ -109,7 +109,7 @@ class Classes extends DatabaseConnection
 			$parse['attributes'] = $construct;
 			$classe = $templates->displaytemplate('models/corp',$parse);
 
-			//on s'occupe des création
+			//on s'occupe des créations
 			if(!file_exists(CLASSE_ORIGIN)){mkdir(CLASSE_ORIGIN, 0755);}
 			
 			if($crush){
@@ -119,7 +119,7 @@ class Classes extends DatabaseConnection
 					file_put_contents(CLASSE_ORIGIN  . $this->_Prefix . ucfirst(strtolower($this->removePrefix($this->_Table))).'.php', $classe);
 				}
 			}
-			// la on executera toutes les méthods voulu
+			// la on executera toutes les méthodes voulues
 		}else{
 			return false;
 		}
@@ -187,6 +187,9 @@ class Classes extends DatabaseConnection
 		$class = new ReflectionClass($nameclass);
 		return $class->hasProperty($property);
 	}
-	// http://php.net/manual/fr/reflectionclass.getdoccomment.php
+	/*
+	More info at :
+	 http://php.net/manual/fr/reflectionclass.getdoccomment.php
+	 */
 }
 ?>

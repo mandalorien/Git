@@ -11,6 +11,7 @@ class Tools
 	const CACHE = 'cache';
 	const TIME_CACHE = 300; // 300 sec = 5 min
 	const DIMENSION_IMAGE = 250;
+
 	/* function RandPassword
 	 * paramètres :
 	 *
