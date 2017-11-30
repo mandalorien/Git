@@ -38,7 +38,7 @@ define('META_SUBJECT','sujet');
 
 define('VERSION','0.0.1');
 define('DATE_VERSION','2016');
-define('NAME_SITE','Generateur');
+define('NAME_SITE','Git Plugins');
 define('FOLDER','git/');
 define('CONTACT_WEBSITE','mandalorien.wootook@gmail.com');
 
