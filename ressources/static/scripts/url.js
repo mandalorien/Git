@@ -17,6 +17,11 @@ function getBaseURL()
 			var index2 = url.indexOf("/", index1 + 1);
 			var baseLocalUrl = url.substr(0, index2);
 			var existence = pathname.split("/");
+			
+			var namePage = window.location.pathname;
+			namePage = namePage.split("/");
+			namePage = namePage[namePage.length - 1];
+
 			for(var i = 1;i<=existence.length;i++)
 			{
 				if(existence[i] != '' && typeof existence[i]!="undefined")
@@ -24,8 +29,13 @@ function getBaseURL()
 					cpt ++;
 				}
 			}
+			
 			if(cpt >= 2){
-				return url.substr(0,url.length - 1);
+				if(namePage.length > 0){
+					return url.substr(0,url.length - 1 - namePage.length);
+				}else{
+					return url.substr(0,url.length - 1);
+				}
 			}else{
 				return baseLocalUrl;
 			}
