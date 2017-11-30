@@ -36,14 +36,13 @@ define('META_DESCRIPTION','la meta description');
 define('META_KEYWORDS','keywords');
 define('META_SUBJECT','sujet');
 
-define('VERSION','0.0.1');
+define('VERSION','0.0.8');
 define('DATE_VERSION','2016');
 define('NAME_SITE','Git Plugins');
 define('FOLDER','git/');
 define('CONTACT_WEBSITE','mandalorien.wootook@gmail.com');
 
-
-$baseUrl = $_SERVER["HTTP_REFERER"] . ($_SERVER["SERVER_PORT"] != "80" ? ":{$_SERVER["SERVER_PORT"]}" : '');
+$baseUrl = $_SERVER["HTTP_HOST"] . ($_SERVER["SERVER_PORT"] != "80" ? ":{$_SERVER["SERVER_PORT"]}" : '');
 define('SITEURL',$baseUrl . DIRECTORY_SEPARATOR . FOLDER);
 define('CSS',SITEURL .'styles/');
 define('IMAGES',SITEURL .'images/');
