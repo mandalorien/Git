@@ -19,14 +19,6 @@ $CHANGELOG['0.0.6'] = '<span class="label label-warning">New</span> <strong>upda
 $CHANGELOG['0.0.7'] = '<span class="label label-warning">New</span> <strong>fix some french errors in comments</strong>';
 $CHANGELOG['0.0.8'] = '<span class="label label-warning">New</span> <strong>update git.js </strong>';
 
-
-// while (list ($VERSION, $DESCRIPTION) = each ($CHANGELOG) ){
-	// $parse['version_number'] = $VERSION;
-	// $parse['description'] = $DESCRIPTION;
-
-	// $list .= $form->display($template->displaytemplate('changelog_table', $parse));
-// }
-
 foreach($CHANGELOG as $VERSION=>$DESCRIPTION){
 	
 	$parse['version_number'] = $VERSION;
@@ -36,7 +28,6 @@ foreach($CHANGELOG as $VERSION=>$DESCRIPTION){
 }
 
 $parse['SCRIPT'] = SCRIPT;
-$parse['extension'] = SCRIPT;
 $parse['body'] = $list;
 $form->display($template->displaytemplate('changelog_body', $parse));
 ?>
