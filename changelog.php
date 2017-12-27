@@ -9,15 +9,15 @@ $form = new Form($template);
 
 $list = null;
 $CHANGELOG = array();
-$CHANGELOG['0.0.0'] = '<span class="label label-success">New</span> <strong>Initial commit</strong>';
-$CHANGELOG['0.0.1'] = '<span class="label label-success">New</span> <strong>inialisation du projet</strong>';
-$CHANGELOG['0.0.2'] = '<span class="label label-warning">New</span> <strong>fix some french errors in comments</strong>';
-$CHANGELOG['0.0.3'] = '<span class="label label-warning">New</span> <strong>fix readme</strong>';
-$CHANGELOG['0.0.4'] = '<span class="label label-danger">New</span> <strong>delete template</strong>';
-$CHANGELOG['0.0.5'] = '<span class="label label-warning">New</span> <strong>update constant NAME_SITE</strong>';
-$CHANGELOG['0.0.6'] = '<span class="label label-warning">New</span> <strong>update script git</strong>';
-$CHANGELOG['0.0.7'] = '<span class="label label-warning">New</span> <strong>fix some french errors in comments</strong>';
-$CHANGELOG['0.0.8'] = '<span class="label label-warning">New</span> <strong>update git.js </strong>';
+$CHANGELOG['0.0.0'] = Form::Changelog(Form::LABEL_SUCCESS,'New','Initial commit');
+$CHANGELOG['0.0.1'] = Form::Changelog(Form::LABEL_SUCCESS,'New','inialisation du projet');
+$CHANGELOG['0.0.2'] = Form::Changelog(Form::LABEL_WARNING,'Warning','fix some french errors in comments');
+$CHANGELOG['0.0.3'] = Form::Changelog(Form::LABEL_WARNING,'Warning','fix readme');
+$CHANGELOG['0.0.4'] = Form::Changelog(Form::LABEL_ALERT,'Delete','delete template');
+$CHANGELOG['0.0.5'] = Form::Changelog(Form::LABEL_NORMALE,'Update','update constant NAME_SITE');
+$CHANGELOG['0.0.6'] = Form::Changelog(Form::LABEL_NORMALE,'Update','update script git');
+$CHANGELOG['0.0.7'] = Form::Changelog(Form::LABEL_WARNING,'warning','fix some french errors in comments');
+$CHANGELOG['0.0.8'] = Form::Changelog(Form::LABEL_NORMALE,'Update','update git.js ');
 
 foreach($CHANGELOG as $VERSION=>$DESCRIPTION){
 	

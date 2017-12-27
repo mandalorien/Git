@@ -10,6 +10,12 @@
 
 class Form
 {
+	
+	const LABEL_SUCCESS  ='label-success';
+	const LABEL_NORMALE  ='label-info';
+	const LABEL_WARNING  ='label-warning';
+	const LABEL_ALERT    ='label-primary';
+	
 	const MESS_SUCCESS  ='panel-success';
 	const MESS_NORMALE  ='panel-info';
 	const MESS_WARNING  ='panel-danger';
@@ -130,6 +136,10 @@ class Form
 		$parse['mess'] = $mess;
 		$parse['type'] = $type;
 		return $this->_Template->displaytemplate(('structure/message_bulle'), $parse);
+	}
+	
+	static function Changelog($Type,$Title,$Content){
+		return sprintf('<span class="label %s">%s</span> <strong>%s</strong>',$Type,$Title,$Content);
 	}
 }
 ?>
